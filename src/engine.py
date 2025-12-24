@@ -24,7 +24,10 @@ class Game:
 
     def __init__(self):
         pygame.init()
-        pygame.mixer.init()
+        try:
+            pygame.mixer.init()
+        except pygame.error:
+            pass  # Audio not available
 
         # Display setup - render at low res, scale up
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
