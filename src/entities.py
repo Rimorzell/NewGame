@@ -59,14 +59,14 @@ class Entity:
 
     def distance_to(self, other):
         """Calculate distance to another entity or point"""
-        if isinstance(other, Entity):
+        if hasattr(other, 'x') and hasattr(other, 'y'):
             return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
         else:
             return math.sqrt((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2)
 
     def angle_to(self, other):
         """Calculate angle to another entity or point"""
-        if isinstance(other, Entity):
+        if hasattr(other, 'x') and hasattr(other, 'y'):
             return math.atan2(other.y - self.y, other.x - self.x)
         else:
             return math.atan2(other[1] - self.y, other[0] - self.x)
